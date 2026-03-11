@@ -1,1 +1,1 @@
-hello world
+PySide6>=6.6
