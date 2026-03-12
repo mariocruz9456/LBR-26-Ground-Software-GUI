@@ -116,9 +116,9 @@ class MainWindow(QMainWindow):
 
         self._log.log_debug(
             f"pkt {frame.packet_count:04d}"
-            f"alt = {frame.altitude_m:.1f}m"
-            f"vel = {frame.velocity_mps:.1f}m/s"
-            f"rssi = {frame.rssi_dbm:.1f}dBm"
+            f"alt = {frame.altitude:.1f}m"
+            f"vel = {frame.velocity:.1f}m/s"
+            f"rssi = {frame.signal:.1f}dBm"
         )
     
     def _on_status_change(self, status: SystemStatus):
