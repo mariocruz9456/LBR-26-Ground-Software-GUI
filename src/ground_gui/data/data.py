@@ -22,7 +22,7 @@ class DataSource(ABC):
         pass
 
     @abstractmethod
-    def latest_frame(self) -> Optional[TelemetryFrame]:
+    def get_latest_frame(self) -> Optional[TelemetryFrame]:
         pass
 
     @abstractmethod
@@ -30,9 +30,9 @@ class DataSource(ABC):
         pass
 
     def _emit_frame(self, frame: TelemetryFrame):
-        if self._frame_callback is None:
+        if self._frame_callback is not None:
             self._frame_callback(frame)
 
     def _emit_status(self, status: SystemStatus):
-        if self._status_callback is None:
+        if self._status_callback is not None:
             self._status_callback(status)

@@ -57,7 +57,7 @@ Mock_Frames = [
 
     TelemetryFrame (
         altitude = 298.0,
-        velocity_mps = 12.3,
+        velocity = 12.3,
         acceleration = -9.8,
         temperature = 10.5,
         battery = 8.22,
