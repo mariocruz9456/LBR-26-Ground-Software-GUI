@@ -11,7 +11,7 @@ class DataSource(ABC):
         self._frame_callback = callback
 
     def on_status_change(self, callback):
-        self._status_checl = callback
+        self._status_callback = callback
 
     @abstractmethod
     def connect(self):
@@ -22,7 +22,7 @@ class DataSource(ABC):
         pass
 
     @abstractmethod
-    def get_latest_frame(self) -> Optional[TelemetryFrame]:
+    def latest_frame(self) -> Optional[TelemetryFrame]:
         pass
 
     @abstractmethod

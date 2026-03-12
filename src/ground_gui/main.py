@@ -1,21 +1,23 @@
+"""
+
+Main file which gets everything running
+
+"""
+
 import sys
-from PySide6 import QtWidgets
-from PySide6 import QApplication
-
-# Mock data just to test if the GUI works
-from ground_gui.data.mock_data import mockdata
-
-# Main window of GUI
-from ground_gui.ui.main_window import mainwindow
+from PySide6.QtWidgets import QApplication
+from ground_gui.data.mockdata import MockDataSource
+from ground_gui.ui.main_window import MainWindow
 
 def main():
     app = QApplication(sys.argv)
-    app.setApplicationName("Ground GUI")
+    app.setApplicationName("Ground Station GUI")
 
-    source = mockdata(interval = 1000)
+    # MockDataSource sends fake telemtry data every 1000 ms (1 second)
+    # Replaced later with real data source
+    source = MockDataSource(interval_ms = 1000)
 
-    window = mainwindow(datasource = source)
-
+    window = MainWindow(datasource = source)
     window.show()
 
     sys.exit(app.exec())

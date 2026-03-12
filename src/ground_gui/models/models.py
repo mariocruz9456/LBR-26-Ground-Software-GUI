@@ -13,7 +13,7 @@ from enum import Enum, auto
 from typing import Optional
 
 
-class ConnectionStatus(Enum):
+class ConnectionState(Enum):
     Disconnected = auto()
     Connecting = auto()
     Connected = auto()
@@ -21,11 +21,11 @@ class ConnectionStatus(Enum):
 
 @dataclass
 class SDRConfig:
-    device: str = "idk"
-    sample_rate_hz = 1_000_000
-    center_freq_hz = 915_000_000
-    gain_db = float = 12.0
-    output_path = str = "telemetry.bin"
+    device: str = "rtlsdr"
+    sample_rate_hz = 2_048_000
+    center_freq_hz = 433_920_000
+    gain_db = float = 30.0
+    output_path = str = "output/frame.bin"
     verbose = bool = False
 
     @property
@@ -34,20 +34,16 @@ class SDRConfig:
     
     @property
     def center_freq_hmz(self):
-        return self.center_frez_hz / 1_000_000
+        return self.center_freq_hz / 1_000_000
     
 
 @dataclass
 class TelemetryFrame:
     timestamp: datetime = None
 
-    altitude_m: float = 0.0
-    velocity_mps: float = 0.0
+    altitude: float = 0.0
+    velocity: float = 0.0
     acceleration: float = 0.0
-
-    pitch_deg: float = 0.0
-    roll_deg: float = 0.0
-    yaw_deg: float = 0.0
 
     temperature: float = 0.0
     battery: float = 0.0
@@ -61,7 +57,7 @@ class TelemetryFrame:
 
 @dataclass
 class SystemStatus:
-    connection_state: ConnectionStatus = ConnectionStatus.Disconnected
+    connection_state: ConnectionState = ConnectionState.Disconnected
     sdr_config: Optional[SDRConfig] = None
     last_packet_time: Optional[datetime] = None
     packets_received: int = 0
@@ -70,4 +66,4 @@ class SystemStatus:
 
     @property
     def is_connected(self):
-        return self.connection_state == ConnectionStatus.Connected
+        return self.connection_state == ConnectionState.Connected
