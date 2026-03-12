@@ -33,7 +33,7 @@ class SDRConfig:
         return self.sample_rate_hz / 1_000_000
     
     @property
-    def center_freq_hmz(self):
+    def center_freq_mhz(self):
         return self.center_freq_hz / 1_000_000
     
 

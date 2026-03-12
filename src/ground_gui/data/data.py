@@ -18,7 +18,7 @@ class DataSource(ABC):
         pass
 
     @abstractmethod
-    def disconnected(self):
+    def disconnect(self):
         pass
 
     @abstractmethod

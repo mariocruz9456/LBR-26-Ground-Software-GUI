@@ -18,6 +18,7 @@ class HeartbeatDot(QWidget):
         self._animation.setDuration(900)
         self._animation.setStartValue(1.0)
         self._animation.setKeyValueAt(0.5, 0.2)
+        self._animation.setEndValue(1.0)
         self._animation.setEasingCurve(QEasingCurve.Type.InOutSine)
         self._animation.setLoopCount(-1)
 
@@ -43,7 +44,7 @@ class HeartbeatDot(QWidget):
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
-        painter.setOPacity(self._opactiy)
+        painter.setOpacity(self._opactiy)
         painter.setPen(Qt.PenStyle.NoPen)
         painter.setBrush(self._color)
         margin = 2
@@ -101,7 +102,6 @@ class StatusBar(QFrame):
         layout.addWidget(self._uptime_label)
 
     def _add_separator(self, layout):
-        layout = QHBoxLayout(self)
         sep = QLabel("|")
         sep.setObjectName("Separator")
         layout.addWidget(sep)
@@ -143,10 +143,10 @@ class StatusBar(QFrame):
             color = "#94a3b8"
         
         self._state_label.setStyleSheet(
-            f"font-weight: bold; font-size: 11px; color {color}; latter-spacing: 1px;"
+            f"font-weight: bold; font-size: 11px; color: {color}; latter-spacing: 1px;"
         )
 
-        if status.adr_config is not None:
+        if status.sdr_config is not None:
             cfg = status.sdr_config
             self._sdr_label.setText(f"SDR: {cfg.device.upper()}")
             self._freq_label.setText(f"Freq: {cfg.center_freq_hmz:.1f} MHz")

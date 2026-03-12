@@ -6,7 +6,7 @@ from ground_gui.models.models import ConnectionState, SDRConfig, SystemStatus, T
 
 Mock_SDR_Config = SDRConfig(
     device = "rtlsdr",
-    sample_rate_hz = 2_0480_000,
+    sample_rate_hz = 2_048_000,
     center_freq_hz = 433_920_000,
     gain_db = 30.0,
     output_path = "output/frame.bin",
@@ -88,7 +88,7 @@ class MockDataSource(DataSource):
         self._emit_status(self.status)
         self.timer.start(self.interval_ms)
 
-    def disconnected(self):
+    def disconnect(self):
         self.timer.stop()
         self.status.connection_state = ConnectionState.Disconnected
         self._emit_status(self.status)

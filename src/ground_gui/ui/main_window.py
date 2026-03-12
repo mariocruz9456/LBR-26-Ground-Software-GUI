@@ -36,13 +36,13 @@ class MainWindow(QMainWindow):
         self._log.log_info("Ground station started - currently running mock data")
         cfg = self._source.get_status().sdr_config
         self._log.log_info(
-            f"SDR config: {cfg.device.upper()} at {cfg.center_freq_hmz:.1f} MHz"
+            f"SDR config: {cfg.device.upper()} at {cfg.center_freq_mhz:.1f} MHz"
             f"SR: {cfg.sample_rate_mhz:.1f} MSPS Gain: {cfg.gain_db} dB"
         )
 
     def _build_ui(self):
         central_widget = QWidget()
-        self.setCentralWidget(self.centralWidget)
+        self.setCentralWidget(central_widget)
 
         root_layout = QVBoxLayout(central_widget)
         root_layout.setContentsMargins(0, 0, 0, 0)
@@ -81,12 +81,12 @@ class MainWindow(QMainWindow):
         self.setStyleSheet("""
             QMainWindow, QWidget {
                 background-color: #f8fafc;
-                front-family: 'Stage UI', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+                front-family: 'Segoe UI', 'SF Pro Text', 'Helvetica Neue', sans-serif;
             }
             QSplitter::handle {
                 background: #e2e8f0;
             }
-            QScollArea {
+            QScrollArea {
                 background: transparent;
             }
             QScrollBar::vertical {
@@ -94,12 +94,12 @@ class MainWindow(QMainWindow):
                 width: 8px;
                 border-radius: 4px;    
             }
-            QScrollbar::handle:vertical {
+            QScrollBar::handle:vertical {
                 background: #cbd5e1;
                 border-radius: 4px;
                 min-height: 20px;
             }
-            QSrollBar::handle:vertical:hover {
+            QScrollBar::handle:vertical:hover {
                 background: #94a3b8;               
             }
             QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {

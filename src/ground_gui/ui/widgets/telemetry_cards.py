@@ -142,11 +142,11 @@ class TelemetryCardsPanel(QWidget):
         self._pkt_cnt = MetricCard("Packets", "rx")
 
         rf_grid.addWidget(self._rssi, 0, 0)
-        rf_grid.addWiget(self._pkt_cnt, 0, 1)
+        rf_grid.addWidget(self._pkt_cnt, 0, 1)
         rf_grid.addWidget(QWidget(), 0, 2)
         root.addLayout(rf_grid)
 
-        root.addStretch
+        root.addStretch()
 
     def update_frame(self, frame: TelemetryFrame):
         self._alt.set_value(frame.altitude, 1)
