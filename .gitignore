@@ -1,1 +1,29 @@
+# Python bytecode — generated automatically, never commit these
+__pycache__/
+*.py[cod]
+*.pyo
 
+# Virtual environment folders
+venv/
+.venv/
+env/
+
+# Package build artifacts
+*.egg-info/
+dist/
+build/
+
+# Editor folders
+.idea/
+.vscode/
+
+# Binary telemetry output files from the SDR pipeline
+*.bin
+output/
+
+# Local config overrides — don't commit device-specific settings
+config_local.yaml
+
+# OS files
+.DS_Store
+Thumbs.db
