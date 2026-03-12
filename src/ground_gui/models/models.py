@@ -22,11 +22,11 @@ class ConnectionState(Enum):
 @dataclass
 class SDRConfig:
     device: str = "rtlsdr"
-    sample_rate_hz = 2_048_000
-    center_freq_hz = 433_920_000
-    gain_db = float = 30.0
-    output_path = str = "output/frame.bin"
-    verbose = bool = False
+    sample_rate_hz: int =  2_048_000
+    center_freq_hz: int =  433_920_000
+    gain_db: float =  30.0
+    output_path: str = "output/frame.bin"
+    verbose: bool = False
 
     @property
     def sample_rate_mhz(self):
